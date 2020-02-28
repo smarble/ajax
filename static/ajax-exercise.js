@@ -3,28 +3,35 @@
 
 // PART 1: SHOW A FORTUNE
 
-function showFortune(evt) {
 
+function showFortune(evt) {
     // TODO: get the fortune and show it in the #fortune-text div
- $.get('/fortune', (res) => {$('#fortune-text').text(res);});
+
+ $.get('/fortune', (res) => {$('#fortune-text').html(res);});
 }
   //   $('#fortune-text').append("<li>showFortune function works with onclick</li>");
   // }
 // Calls the function above
 
+// will generate a evt object and pass it to showFortune as the first agument by default
 $('#get-fortune-button').on('click', showFortune);
 
 
 // PART 2: SHOW WEATHER
 
 function showWeather(evt) {
+    // prevents the browser from loading another page
     evt.preventDefault();
 
     let url = "/weather.json";
     let formData = {"zipcode": $("#zipcode-field").val()};
-
-
     // TODO: request weather with that URL and show the forecast in #weather-info
+    // show weather from .py needs an argument, wich is supplied by formData.
+    $.get('/weather.json', formData, (res) => {
+      console.log(Data);
+      $('#weather-info').text(res.forecast);
+    });
+
 }
 
 $("#weather-form").on('submit', showWeather);
