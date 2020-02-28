@@ -27,7 +27,7 @@ function showWeather(evt) {
     let formData = {"zipcode": $("#zipcode-field").val()};
     // TODO: request weather with that URL and show the forecast in #weather-info
     // show weather from .py needs an argument, wich is supplied by formData.
-    $.get('/weather.json', formData, (res) => {
+    $.get(url, formData, (res) => {
       console.log(Data);
       $('#weather-info').text(res.forecast);
     });
@@ -44,8 +44,15 @@ $("#weather-form").on('submit', showWeather);
 function orderMelons(evt) {
     evt.preventDefault();
 
+
     // TODO: show the result message after your form
-    // TODO: if the result code is ERROR, make it show up in red (see our CSS!)
+    // TODO: if the result code is ERROR, make it show up in red (see our CSS!
+
+    let url = '/order-melons.json';
+    let data = ;
+    let resulthandler = alert();
+
+    $.post(url, data, resulthandler)
 }
 
 $("#order-form").on('submit', orderMelons);
