@@ -6,12 +6,13 @@
 function showFortune(evt) {
 
     // TODO: get the fortune and show it in the #fortune-text div
+ $.get('/fortune', (res) => {$('#fortune-text').text(res);});
 }
+  //   $('#fortune-text').append("<li>showFortune function works with onclick</li>");
+  // }
+// Calls the function above
 
 $('#get-fortune-button').on('click', showFortune);
-
-
-
 
 
 // PART 2: SHOW WEATHER
